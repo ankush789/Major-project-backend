@@ -4,6 +4,10 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 
+//Extracting styles and scripts files from subpages to include them in layout at desired place
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 //Setting folder for Static Files
 app.use(express.static('./assets'));
 
