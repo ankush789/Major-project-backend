@@ -4,6 +4,9 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 
+//Setting folder for Static Files
+app.use(express.static('./assets'));
+
 //Setting express router
 app.use('/', require('./routes'));
 
