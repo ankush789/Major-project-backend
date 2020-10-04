@@ -1,2 +1,8 @@
 <link rel="stylesheet"  type="text/css" href="/css/userProfile.css">
 <h2>USER PROFILE</h2>
+<h3>Name: <%= user.name %></h3>
+<h3>Email: <%= user.email %></h3>
+<form action="/users/sign-out" method="post">
+    <input type="submit" value="Sign Out">
+</form>
+
