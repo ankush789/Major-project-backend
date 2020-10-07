@@ -40,7 +40,7 @@ app.use(session({
 //Use session-cookie
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(passport.setAuthenticatedUser);
 //Setting express router
 app.use('/', require('./routes'));
 

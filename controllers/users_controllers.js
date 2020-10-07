@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 module.exports.profile =function(req,res){
-    return res.render('userProfile');
+    return res.render('userProfile', {title: "Profile"});
 }
 
 //Rendering Sign In page
