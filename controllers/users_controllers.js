@@ -6,6 +6,9 @@ module.exports.profile =function(req,res){
 
 //Rendering Sign In page
 module.exports.signin = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('users_sign_in',{
         title: "Codeial | Sign In"
     })
@@ -13,6 +16,9 @@ module.exports.signin = function(req, res){
 
 //Rendering Sign Up Page
 module.exports.signup = function(req, res){
+    if (req.isAuthenticated()) {
+        return res.redirect("/users/profile");
+    }
     return res.render('users_sign_up', {
         title: "Codeial | Sign Up"
     })
