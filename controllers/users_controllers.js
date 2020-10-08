@@ -50,3 +50,10 @@ module.exports.create = function(req, res){
 module.exports.createSession = function(req, res){
     return res.redirect('/');
 }
+
+//log out and destroy session
+module.exports.destroySession = function (req, res) {
+    //remove the user's session cookies to remove the signed in user
+  req.logout();
+  return res.redirect("/");
+};

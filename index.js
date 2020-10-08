@@ -9,7 +9,10 @@ app.use(expressLayouts);
 //for Session cookies and their encryption
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('./config/passport-local-strategy')
+const passportLocal = require('./config/passport-local-strategy');
+//Require MongoDB
+const MongoStore = require('connect-mongo')(session);
+
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -34,7 +37,14 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: ( 1000*60*100 )
-    }
+    },
+    //Mongo Store is used to save session cookie permanently
+    store: new MongoStore({
+        mongooseConnection: db,
+        autoRemove:'disabled'
+    }, function(err){
+        console.log(err);
+    })
 }));
 
 //Use session-cookie
