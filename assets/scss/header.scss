@@ -1,0 +1,26 @@
+.nav{
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #007ACC;
+    h1 {
+        margin: 13px;;
+    }
+    div{
+        ul{
+            list-style: none;
+            padding: 0px;
+            margin: 22px;
+            li{
+                display: inline-block;
+                margin: 0px 8px 8px 0px;
+                a {
+                    color: #fff;
+                    font-size: 1.2rem;
+                    text-decoration: none;
+                 }
+            }
+        }
+    }
+}
