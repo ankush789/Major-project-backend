@@ -4,6 +4,7 @@ const passport = require('passport');
 
 const postController = require('../controllers/post_controllers');
 
-router.post('/create-post', postController.createPost);
+//Restricting only Authenticated users to create a post
+router.post('/create-post', passport.checkAuthentication, postController.createPost);
 
 module.exports = router;
