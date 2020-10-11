@@ -8,3 +8,16 @@
         <input type="submit" value="Post">
     </form>
 </section>
+
+//Displaying posts
+<div id="post">   
+    <ul>
+            <% for( post of posts){ %>
+            <p>
+             <li><%= post.content %></li>
+            <small>-- <%= post.user.name %> </small>
+            </p>
+            <hr>
+            <% } %>
+    </ul>
+</div>
