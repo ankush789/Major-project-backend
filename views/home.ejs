@@ -18,7 +18,13 @@
     <ul>
             <% for( post of posts){ %>
             <p>
-             <li><%= post.content %></li>
+             <li>
+                 <%= post.content %>
+                 <!-- if user is logged in and post is created by signed in user  -->
+                 <% if(locals.user && locals.user.id == post.user.id){ %>
+                 <a href="posts/delete/<%= post.id %>">X</a>
+                 <% } %>
+            </li>
             <small>-- <%= post.user.name %> </small>
             </p>
             <div class="post-comments">
