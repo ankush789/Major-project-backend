@@ -3,7 +3,7 @@
 
 <section id="feed-posts">
     <h4>Posts</h4>
-    //Show form only if user is logged in 
+    <!-- Show form only if user is logged in  -->
     <% if(locals.user){ %>
     <form action="/posts/create-post" method="post">
         <textarea name="content" id="" cols="30" rows="3" placeholder="Type Here...."></textarea>
@@ -21,6 +21,17 @@
              <li><%= post.content %></li>
             <small>-- <%= post.user.name %> </small>
             </p>
+            <div class="post-comments">
+                <% if(locals.user){ %>
+                    <form action="/comments/create-comment" method="post">
+                        <input type="text" name="content" id="comment-field" placeholder="Type here to add comment...">
+                        <!-- Assigning Post id to the comment -->
+                        <input type="hidden" name="post" value="<%= post._id %>">
+                        <input type="submit" value="Add Comment">
+                    </form>
+                <% } %>
+            </div>
+
             <hr>
             <% } %>
     </ul>
