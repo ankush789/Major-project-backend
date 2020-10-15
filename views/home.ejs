@@ -41,6 +41,10 @@
                         <% for(comment of post.comments ){ %>
                             <p>
                                 <%= comment.content %>
+                                <!-- only user or comment creator can delete comment -->
+                                <% if(locals.user && (locals.user.id == comment.user.id || locals.user.id == post.user.id) ){ %>
+                                    <a href="/comments/delete/<%= comment.id %>">X</a>
+                                 <% } %>       
                                 <br>
                                 <small>
                                     <%= comment.user.name %>
