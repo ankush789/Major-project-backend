@@ -7,6 +7,7 @@ router.get("/profile/:id", passport.checkAuthentication, usersController.profile
 router.get('/sign-in', usersController.signin);
 router.get('/sign-up', usersController.signup);
 router.post('/create', usersController.create);
+router.post('/update/:id',passport.checkAuthentication, usersController.update);
 
 //Passport middleware to authenticate user before log in
 router.post('/create-session', passport.authenticate(

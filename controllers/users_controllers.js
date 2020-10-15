@@ -75,3 +75,13 @@ module.exports.destroySession = function (req, res) {
   req.logout();
   return res.redirect("/");
 };
+
+//Update User Profile
+module.exports.update = function(req,res){
+    let userId = req.params.id;
+
+    //Find the user and update its profile
+    User.findByIdAndUpdate(userId,{ name: req.body.name , email: req.body.email },function(err,user){
+        return res.redirect('/');
+    })
+}
