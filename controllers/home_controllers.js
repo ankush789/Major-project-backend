@@ -1,6 +1,6 @@
 const Post = require('../models/post');
 const User = require('../models/user');
-module.exports.home = function(req,res){
+module.exports.home = async function(req,res){
     // //printing cookies
     // console.log(req.cookies);
     // //Setting cookies in response
@@ -15,24 +15,28 @@ module.exports.home = function(req,res){
     // })
     // })
 
-    //Pre-Populating to get the whole user in post.user field
+try{
+     //Pre-Populating to get the whole user in post.user field
     // populate the comments in that post and the user of each of the comments
-    Post.find({})
+    let posts = await Post.find({})
     .populate('user')
     .populate({
         path: 'comments',
         populate: {
             path: 'user'
         }
-    })
-    .exec(function(err,posts){
-        User.find({},function(err, user){
-            return res.render('home',{
-            title: 'Home',
-            posts: posts,
-            all_users: user
-        })
-        })
-
     });
+    
+    let user = await User.find({});
+
+    return res.render('home',{
+        title: 'Home',
+        posts: posts,
+        all_users: user
+    });
+}catch(err){
+    console.log(`Error in home controller: ${err}`);
+    return;
+}
+
 }
