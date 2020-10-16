@@ -1,11 +1,16 @@
-body{
-    
+#home-container{
+    display: flex;
+    #feed-posts{
+        width: 70%;
+        padding: 10px;
+    }
+    #user-friends-list{
+        width: 30%;
+        padding:10px;
+        border-left: 1px solid lightgrey;
+        // height: 100%;
+    }
 }
 
-#post{
-    width: 40%;
-}
 
-#feed-posts{
-    margin-left: 25px;
-}
+
