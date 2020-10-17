@@ -63,6 +63,9 @@ module.exports.create = function(req, res){
 
 //login and create session for the user
 module.exports.createSession = function(req, res){
+    //Setting messages in request and to put these messages in the response 
+    // middleware is used
+    req.flash('success', 'Successfully logged in!!');
     return res.redirect('/');
 }
 
@@ -71,6 +74,7 @@ module.exports.createSession = function(req, res){
 
 //log out and destroy session
 module.exports.destroySession = function (req, res) {
+    req.flash('success','You have been logged out!!');
     //remove the user's session cookies to remove the signed in user
   req.logout();
   return res.redirect("/");
