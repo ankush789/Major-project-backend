@@ -37,6 +37,7 @@ module.exports.signup = function(req, res){
 module.exports.create = function(req, res){
     //redirecting back to the same page if password of two field does not match 
     if (req.body.password != req.body.confirm_password){
+        req.flash('error','Password do not match!!');
         return res.redirect('back');
     }
     //Find a user with entered email address, if exists
@@ -52,6 +53,7 @@ module.exports.create = function(req, res){
         }
     //If user exist for the entered email address
         else{
+            req.flash('error','Email Id is already in use');
             return res.redirect('back');
         }
     })

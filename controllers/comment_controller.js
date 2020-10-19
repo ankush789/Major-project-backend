@@ -39,6 +39,7 @@ module.exports.deleteComment = function(req,res){
 
                 //Deleting comment ids from the post.comments array 
                     Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}},function(err, post){
+                        req.flash('success','Comment deleted!');
                         return res.redirect('back')
                     })
                 }
