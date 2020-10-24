@@ -4,7 +4,7 @@
         <h4>Posts</h4>
         <!-- Show form only if user is logged in  -->
         <% if(locals.user){ %>
-        <form action="/posts/create-post" method="post">
+        <form action="/posts/create-post" method="post" id="new-post-form">
             <textarea name="content" id="" cols="30" rows="3" placeholder="Type Here...."></textarea>
             <input type="submit" value="Post">
         </form>
@@ -31,4 +31,5 @@
         <% } %>
     </section>
 </div>
+<script src="/js/home_posts.js"></script>
 

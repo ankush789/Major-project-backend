@@ -4,7 +4,7 @@ const app = express();
 const port = 9000;
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
-app.use(expressLayouts);
+
 
 //for Session cookies and their encryption
 const session = require('express-session');
@@ -28,12 +28,13 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+//Setting folder for Static Files
+app.use(express.static('./assets'));
+
+app.use(expressLayouts);
 //Extracting styles and scripts files from subpages to include them in layout at desired place
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-
-//Setting folder for Static Files
-app.use(express.static('./assets'));
 
 
 //install ejs and setup view engine
