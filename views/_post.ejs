@@ -1,9 +1,9 @@
-<li>
+<li id="post-<%= post._id %>">
     <p>
         <%= post.content %>
         <!-- if user is logged in and post is created by signed in user  -->
         <% if(locals.user && locals.user.id == post.user.id){ %>
-        <a href="posts/delete/<%= post.id %>">X</a>
+        <a class="delete-post-button" href="posts/delete/<%= post.id %>">X</a>
         <% } %>
         <br>
         <small>-- <%= post.user.name %> </small>

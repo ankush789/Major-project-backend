@@ -12,7 +12,10 @@ let createPost = function(){
             //This converts form data to Json Object
             data: newPostForm.serialize(),
             success: function(data){
-                console.log(data);
+                let newPost = newPostDom(data.data.post);
+                console.log(newPost);
+                $('#post > ul').prepend(newPost);
+
             }, error: function(error){
                 console.log(error.responseText);
             }
@@ -20,7 +23,32 @@ let createPost = function(){
     })
 } 
 
-//Method to create a post in
+//Method to create a post in DOM
+let newPostDom = function(post){
+    console.log(post);
+    return $(`<li id="post-${post._id }">
+                <p>
+                    ${post.content}                    
+                    <a class="delete-post-button" href="posts/delete/${post._id}">X</a>
+                    <br>
+                    <small>-- ${post.user.name} </small>
+                </p>
+                <div class="post-comments">
+                    <form action="/comments/create-comment" method="post">
+                        <input type="text" name="content" id="comment-field" placeholder="Type here to add comment...">
+                        <!-- Assigning Post id to the comment -->
+                        <input type="hidden" name="post" value="${ post._id }">
+                        <input type="submit" value="Add Comment">
+                    </form>
+                    <div class="post-comments-list">
+                        <ul id="post-comments-${ post._id }">
+
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </li>`)
+}
 
 
 createPost();
