@@ -19,6 +19,7 @@ try{
      //Pre-Populating to get the whole user in post.user field
     // populate the comments in that post and the user of each of the comments
     let posts = await Post.find({})
+    .sort('-createdAt') //Sort post according to the time of creation
     .populate('user')
     .populate({
         path: 'comments',

@@ -10,6 +10,7 @@ module.exports.createPost = async function(req,res){
         })
         //Checking if there is a ajax request
         if(req.xhr){
+            req.flash('success','Post published!');
             return res.status(200).json({
                 data: {
                     post: post
@@ -35,6 +36,16 @@ module.exports.destroy = async function(req,res){
             post.remove();
             //Delete all those comments which have post: req.params.id
             await Comment.deleteMany({post: req.params.id });
+
+            if(req.xhr){
+                return res.status('200').json({
+                    //This data is sent back to the AJAX request
+                    data: {
+                        post_id: req.params.id
+                    },
+                    message: "Post Deleted"
+                })
+            }
             req.flash('success','Post deleted!!')
             return res.redirect('back');
         }
