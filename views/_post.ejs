@@ -10,7 +10,7 @@
     </p>
     <div class="post-comments">
         <% if(locals.user){ %>
-        <form action="/comments/create-comment" method="post">
+        <form id="post-<%= post._id %>-comments-form" action="/comments/create-comment" method="post">
             <input type="text" name="content" id="comment-field" placeholder="Type here to add comment...">
             <!-- Assigning Post id to the comment -->
             <input type="hidden" name="post" value="<%= post._id %>">
@@ -29,3 +29,5 @@
     </div>
     <hr>
 </li>
+
+ 
