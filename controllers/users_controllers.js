@@ -108,6 +108,7 @@ module.exports.update = async function(req,res){
                     //Saving the path of uploaded image in the avatar field of user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
+                user.save();
                 return res.redirect('back');
            });
         } catch (error) {
