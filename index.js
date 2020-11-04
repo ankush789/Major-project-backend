@@ -30,7 +30,11 @@ app.use(cookieParser());
 //Setting folder for Static Files
 app.use(express.static('./assets'));
 
+//make the uploads path available to the browser
+///uploads --> majorProjectBackend/uploads
+app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(expressLayouts);
+
 //Extracting styles and scripts files from subpages to include them in layout at desired place
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
