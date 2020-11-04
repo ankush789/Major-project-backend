@@ -83,13 +83,41 @@ module.exports.destroySession = function (req, res) {
 };
 
 //Update User Profile
-module.exports.update = function(req,res){
+module.exports.update = async function(req,res){
     let userId = req.params.id;
+    // if(req.user.id == userId){
+    //     //Find the user and update its profile
+    //     User.findByIdAndUpdate(userId,{ name: req.body.name , email: req.body.email },function(err,user){
+    //         return res.redirect('back');
+    //     })
+    // }
     if(req.user.id == userId){
-        //Find the user and update its profile
-        User.findByIdAndUpdate(userId,{ name: req.body.name , email: req.body.email },function(err,user){
-            return res.redirect('/');
-        })
+        try {
+            //Find user using userID
+            let user = await User.findById(userId);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    console.log('*****multERROR', err);
+                    return;
+                }
+                console.log(req.file);   
+                user.name = req.body.name;
+                user.email = req.body.email;           
+                //If any file is uploaded
+                if(req.file){
+                    //Saving the path of uploaded image in the avatar field of user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                return res.redirect('back');
+           });
+        } catch (error) {
+            console.log(`Error: ${error}`);
+            return;
+        }
     }
-
+    else {
+        req.flash('error',Unauthorized);
+        return res.status(401).send('Unauthorized');
+    }
+   
 }
