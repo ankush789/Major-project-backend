@@ -1,12 +1,9 @@
 const express = require('express');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/'})
 const cookieParser = require('cookie-parser')
 const app = express();
 const port = 9000;
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
-
 
 //for Session cookies and their encryption
 const session = require('express-session');
