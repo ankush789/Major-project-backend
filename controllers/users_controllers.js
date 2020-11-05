@@ -1,4 +1,7 @@
 const User = require('../models/user');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
 
 module.exports.profile =function(req,res){
     User.findById(req.params.id,function(err,user){
@@ -96,17 +99,38 @@ module.exports.update = async function(req,res){
             //Find user using userID
             let user = await User.findById(userId);
             User.uploadedAvatar(req,res,function(err){
-                if(err){
-                    console.log('*****multERROR', err);
-                    return;
+                if(req.fileValidationError){
+                    req.flash('error',req.fileValidationError);
+                    return res.redirect('back');
                 }
-                console.log(req.file);   
+                // else if(!req.file){
+                //     req.flash('error','Please select an image to upload');
+                //     return res.redirect('back');
+                // }
+                else if(err instanceof multer.MulterError){
+                    if(err.code === 'LIMIT_FILE_SIZE'){
+                        req.flash('error','File should be less than 1 MB in size!!');
+                    }
+                    else{ 
+                        req.flash('error',err);
+                    }
+                    return res.redirect('back');
+                }
+                else if(err){
+                    req.flash('error',err);
+                    return res.redirect('back');
+                }
                 user.name = req.body.name;
                 user.email = req.body.email;           
                 //If any file is uploaded
                 if(req.file){
+                    //Deleting if previous avatar is present
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar))
+                    }
                     //Saving the path of uploaded image in the avatar field of user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
+                    req.flash('success','Profile Updated!!');
                 }
                 user.save();
                 return res.redirect('back');
