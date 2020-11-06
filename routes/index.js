@@ -8,4 +8,7 @@ router.use('/users', require('./users'));
 router.use('/comments', require('./comments'));
 router.use('/posts', require('./post'));
 
+// Require route file for APIs
+router.use('/api',require('./api'));
+
 module.exports = router;
