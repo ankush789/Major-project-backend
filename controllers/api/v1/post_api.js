@@ -2,6 +2,7 @@ const Post = require('../../../models/post')
 const Comment = require('../../../models/comment');
 
 //index is used when you want to list down something
+//Fetching the posts from the database and saving it to the databases
 module.exports.index = async function(req,res){
  let posts = await Post.find({})
     .sort('-createdAt') //Sort post according to the time of creation
