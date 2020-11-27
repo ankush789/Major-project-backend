@@ -10,7 +10,7 @@ const User = require('../models/user');
 let opts = {
     //header is list of keys. it has a key called authorization 
     //which has a key called bearerToken,which is to be extracted
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken,
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     //Encryption and Decryption key
     secretOrKey:'codeial'
 }
