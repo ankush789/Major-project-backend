@@ -16,5 +16,12 @@ router.post('/create-session', passport.authenticate(
 
 //Router for log out
 router.get('/sign-out', usersController.destroySession);
+
+
+//For authentication from google-oauth
+//scope is a array of strings having all the fields whose permission is to be taken
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect: '/users/sign-in'}),usersController.createSession)
+
 //exporting 
 module.exports = router;
