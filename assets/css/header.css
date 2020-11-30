@@ -4,6 +4,9 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: #007ACC; }
+  .nav a {
+    text-decoration: none;
+    color: white; }
   .nav h1 {
     margin: 13px; }
   .nav div ul {

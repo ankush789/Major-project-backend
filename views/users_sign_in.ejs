@@ -1,10 +1,23 @@
-<h2>Sign IN Page</h2>
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Enter your Email" required>
-    <input type="password" name="password" placeholder="Enter password" required>
-    <input type="submit" value="Sign In">
-</form>
-
-<p>
-    <a href="/users/auth/google">Sign In/ Sign Up using Google</a>
-</p>
+<link rel="stylesheet" href="/css/signin.css">
+<div id="sign-form">
+        <div class="inner">
+            <h1>Sign in</h1>
+            <form action="/users/create-session" method="POST">
+                <div class="form-input">
+                    <input type="email" name="email" placeholder="Enter your Email" required>
+                </div>
+                <div class="form-input">
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </div>
+                <div class="form-input">
+                    <input type="submit" value="Sign In">
+                </div>
+            </form>
+            <div class="google-button">
+                    <a href="/users/auth/google"><img src="https://www.flaticon.com/svg/static/icons/svg/2702/2702602.svg"
+                            style="display: inline;" width="40px" alt="Google">
+                        <h2 style="display: inline;">Sign in with Google</h2>
+                    </a>
+            </div>            
+        </div>
+   </div>
