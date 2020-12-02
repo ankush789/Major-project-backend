@@ -11,8 +11,8 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, //Not using 2 factor authentication
     auth: {
-        user: 'aaasankush9675',
-        pass: 'aNkush@19992'
+        user: 'ankushsharma.nbd',
+        pass: 'Ankush@19991'
     }
 });
 
