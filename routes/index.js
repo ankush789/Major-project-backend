@@ -16,6 +16,6 @@ router.use('/api',require('./api'));
 
 router.use('/reset_password', require('./resetPassword'));
 router.get('/forgot_password',resetPasswordController.forgotPassword);
-router.get('/:id', resetPasswordController.setNewPassword);
+router.get('/setNewPassword/:id', resetPasswordController.setNewPassword);
 
 module.exports = router;
