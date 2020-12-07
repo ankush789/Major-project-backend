@@ -19,6 +19,7 @@ let transporter = nodemailer.createTransport({
 //Function to render a ejs template for the mail
 //relativePath is the place from where mail is to be sent
 let renderTemplate = (data, relativePath) => {
+    //console.log("Inside node mailer**********",data);
     let mailHTML; //Stores all the HTML which is to be send
     ejs.renderFile(
         path.join(__dirname,'../views/mailers', relativePath),
