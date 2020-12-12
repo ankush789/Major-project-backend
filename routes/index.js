@@ -13,6 +13,7 @@ router.use('/posts', require('./post'));
 // Require route file for APIs
 router.use('/api',require('./api'));
 
+router.use('like',require('./likes'));
 
 router.use('/reset_password', require('./resetPassword'));
 router.get('/forgot_password',resetPasswordController.forgotPassword);
