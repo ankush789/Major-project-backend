@@ -19,7 +19,7 @@ module.exports.toggleLike = async function(req,res) {
 
         //Check if a like already exists
         let existingLike = await Like.findOne({
-            likable: req.query.id,
+            likeable: req.query.id,
             onModel: req.query.type,
             user: req.user._id
         });
@@ -27,8 +27,8 @@ module.exports.toggleLike = async function(req,res) {
         //If a like already exists then delete it
         if(existingLike){
             //Pulling existing like from the likes array in "Post or Comment"
-            likable.likes.pull(existingLike._id);
-            likable.save();
+            likeable.likes.pull(existingLike._id);
+            likeable.save();
 
             // removing existing like
             existingLike.remove();
@@ -39,12 +39,12 @@ module.exports.toggleLike = async function(req,res) {
             //Creating a new Like
             let newLike = await Like.create({
                 user: req.user._id,
-                likable: req.query.id,
+                likeable: req.query.id,
                 onModel: req.query.type
             });
             //Pushing new like to the likes array of "Post or Comment"
-            likable.likes.push(like._id);
-            likable.save();
+            likeable.likes.push(newLike._id);
+            likeable.save();
         }
 
         return res.json(200, {
@@ -54,7 +54,7 @@ module.exports.toggleLike = async function(req,res) {
             }
         });
 
-    } catch(error){
+    } catch(err){
         console.log(err);
         return res.json(500, {
             message: 'Internal Server Error'

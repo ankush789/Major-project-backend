@@ -25,8 +25,12 @@ try{
         path: 'comments',
         populate: {
             path: 'user'
+        },
+        populate: {
+            path: 'likes'
         }
-    });
+    }).populate('comments')
+    .populate('likes');
     
     let user = await User.find({});
 
