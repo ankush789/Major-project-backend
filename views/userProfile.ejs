@@ -11,4 +11,9 @@
 <% } else { %>
     <p><%= profile_user.name %></p>
     <p><%= profile_user.email %></p>
+    <% if(!isfriend) { %>
+        <a href="/add/friend/?from=<%= user.id %>&to=<%= profile_user.id %>">ADD FRIEND</a>     
+    <% }else{ %>
+        <a href="">REMOVE</a>
+    <% } %>
 <% } %>

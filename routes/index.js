@@ -9,6 +9,8 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));
 router.use('/comments', require('./comments'));
 router.use('/posts', require('./post'));
+router.use('/add',require('./addFriend'));
+
 
 // Require route file for APIs
 router.use('/api',require('./api'));

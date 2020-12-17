@@ -1,12 +1,22 @@
 const User = require('../models/user');
+const Friendship = require('../models/friendship');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 
-module.exports.profile =function(req,res){
-    User.findById(req.params.id,function(err,user){
-    return res.render('userProfile',{title: "Profile", profile_user: user });
-    });
+module.exports.profile = async function(req,res){
+    try {
+          let user =  await User.findById(req.params.id);
+          
+          let isfriend = await Friendship.findOne({ from_user:req.user._id, to_user: req.params.id } || 
+            { from_user:req.params.id , to_user:req.user._id  });
+
+          return res.render('userProfile',{ title: "Profile", profile_user: user, isfriend : isfriend });      
+    } catch (error) {
+        console.log(error);
+        return;
+    }
+ 
 }
 
 
