@@ -14,10 +14,10 @@
     height: 70%;
     background-color: white;
     overflow: auto; }
-    #user-chat-box #chat-messages-list .other-messages {
+    #user-chat-box #chat-messages-list .other-message {
       text-align: left;
       padding: 5px; }
-      #user-chat-box #chat-messages-list .other-messages span {
+      #user-chat-box #chat-messages-list .other-message span {
         display: inline-block;
         padding: 15px;
         background-color: #ffa0a0; }

@@ -25,5 +25,10 @@ module.exports.chatSockets = function(socketServer){
         //Emiting 'user_joined' event to other user in chatroom "codeial"
         socket.in(data.chatroom).emit("user_joined",data);
     });
+
+    //Detect send messages and broadcast to everyone in the room
+    socket.on('send_message', function(data){
+        io.in(data.chatroom).emit('receive_message',data);
+    })
 });   
 }
