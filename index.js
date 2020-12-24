@@ -27,7 +27,7 @@ const flashMiddleware = require('./config/flashMiddleware');
 const chatServer = require('http').Server(app);
 //Importing server sided file and calling function chatSockets 
 //to which chatServer is being passed
-const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
 //Listening chatServer on the port 5000
 chatServer.listen(5000);
 console.log('Chat server is listening on port 5000');
