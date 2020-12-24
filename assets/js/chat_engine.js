@@ -11,8 +11,22 @@ class ChatEngine{
     }
 }
 connectionHandler(){
+    let self = this;
+
     this.socket.on('connect',function(){
         console.log('Connection established using sockets');
     });
+
+    //Requesting to join the chat room
+    self.socket.emit('join_room', {
+        user_email: self.userEmail,
+        chatroom: 'codeial'
+    });
+
+    //Detecting "user_joined" event 
+    self.socket.on('user_joined',function(data){
+        console.log('A user joined',data);
+    });
+
  }
 }
