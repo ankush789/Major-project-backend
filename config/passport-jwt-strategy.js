@@ -5,14 +5,14 @@ const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const User = require('../models/user');
-
+const env = require('./environment');
 //Keys to encrypt
 let opts = {
     //header is list of keys. it has a key called authorization 
     //which has a key called bearerToken,which is to be extracted
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     //Encryption and Decryption key
-    secretOrKey:'codeial'
+    secretOrKey: env.jwt_secret
 }
 //Using JWT Strategy
 //jwtPayLoad contains user information in encrypted form

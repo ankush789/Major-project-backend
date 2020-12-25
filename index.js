@@ -4,6 +4,7 @@ const app = express();
 const port = 9000;
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
+const env = require('./config/environment');
 
 //for Session cookies and their encryption
 const session = require('express-session');
@@ -31,11 +32,11 @@ const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
 //Listening chatServer on the port 5000
 chatServer.listen(5000);
 console.log('Chat server is listening on port 5000');
-
+const path = require('path');
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname, env.asset_path, 'scss'),
+    dest: path.join(__dirname, env.asset_path, 'css'),
     debug: true,
     outputStyle: 'extended',
     prefix:'/css'
@@ -44,7 +45,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 //Setting folder for Static Files
-app.use(express.static('./assets'));
+app.use(express.static(path.join('.',env.asset_path)));
 
 //make the uploads path available to the browser
 ///uploads --> majorProjectBackend/uploads
@@ -63,7 +64,7 @@ app.set('views', './views');
 //Middleware which encrypts session-cookie and set properties for it
 app.use(session({
     name: 'codeial',
-    secret: 'randomKey',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
