@@ -5,6 +5,7 @@ const port = 9000;
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
 const env = require('./config/environment');
+const dotenv = require('dotenv').config();
 
 //for Session cookies and their encryption
 const session = require('express-session');
