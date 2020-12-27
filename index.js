@@ -3,6 +3,10 @@ const env = require('./config/environment');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser')
 const app = express();
+
+//passing app to the view helper file in config 
+const viewhelper = require('./config/view-helpers')(app);
+
 const port = 9000;
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
