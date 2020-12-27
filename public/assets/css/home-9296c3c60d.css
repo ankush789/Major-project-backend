@@ -1,0 +1,19 @@
+#home-container {
+  display: flex; }
+  #home-container #feed-posts {
+    width: 70%;
+    padding: 10px; }
+  #home-container #user-friends-list {
+    width: 30%;
+    padding: 10px;
+    border-left: 1px solid lightgrey; }
+    #home-container #user-friends-list #friend-list {
+      display: flex;
+      padding: 5px; }
+      #home-container #user-friends-list #friend-list img {
+        width: 53px;
+        height: 55px;
+        margin-right: 20px;
+        border-radius: 50%; }
+      #home-container #user-friends-list #friend-list a {
+        margin-top: 12px; }

@@ -1,0 +1,18 @@
+.footer {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  background-color: #837d7d; }
+  .footer p {
+    color: white;
+    font-size: 22px; }
+  .footer ul {
+    list-style: none;
+    padding: 0px;
+    margin: 22px; }
+    .footer ul li {
+      margin: 0px 8px 8px 0px; }
+      .footer ul li a {
+        color: #fff;
+        font-size: 1.2rem;
+        text-decoration: none; }

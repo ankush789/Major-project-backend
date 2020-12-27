@@ -1,0 +1,27 @@
+#sign-form {
+  margin: 100px auto; }
+
+.inner {
+  text-align: center; }
+
+.form-input {
+  padding: 12px; }
+
+.form-input input {
+  height: 30px;
+  width: 300px;
+  padding: 5px; }
+
+.google-button {
+  width: max-content;
+  background: aliceblue;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin: 12px auto; }
+  .google-button a {
+    text-decoration: none; }
+    .google-button a img {
+      margin-right: 4px; }
+    .google-button a h2 {
+      position: relative;
+      bottom: 11px; }
